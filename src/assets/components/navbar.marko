@@ -1,0 +1,118 @@
+import { links, logo, TLink } from "../config.ts";
+style.scss {
+    @import "../config.scss";
+    nav {
+        position: absolute;
+        background-color: $verde1;
+    }
+    .dropdown-content {
+        width: 200px !important;
+        top: 4.5em !important;
+    }
+    #nav-mobile {
+        max-width: 1000px;
+        margin-left: auto;
+    }
+    .brand-logo {
+        position: relative;
+        height: 100%;
+        float: left;
+        padding: 5px !important; 
+        img {
+            height: 100%;
+        }
+    }
+    nav .nav-wrapper {
+        position: relative;
+        height: 100%;
+        display: flex;
+        padding-inline: 3em;
+    }
+}
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">
+            <img src="../logo completa branca layout alt.png" alt="" id="logo">
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">
+                menu
+            </i>
+        </a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <for|link: TLink, index| of=links>
+
+                <if(link.links)>
+                    <li key=link.label + index>
+                        <a
+                            class="dropdown-trigger"
+                            href="#"
+                            data-target="dropdown-" + link.label
+                        >
+                            ${link.label}
+                        </a>
+
+                        <ul
+                            id="dropdown-" + link.label
+                            class="dropdown-content"
+                        >
+                            <for|sublink: TLink, index| of=link.links>
+                                <li key="sublink" + index>
+                                    <a href=sublink.path>
+                                        ${sublink.label}
+                                    </a>
+                                </li>
+                            </for>
+                        </ul>
+                    </li>
+                </if>
+                <else>
+                    <li key=link.path + index>
+                        <a href=link.path>
+                            ${link.label}
+                        </a>
+                    </li>
+                </else>
+            </for>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav collapsible" id="mobile-demo">
+    <for|link: TLink, index| of=links>
+        <if(link.links)>
+            <li key=link.label + index>
+
+                <div class="collapsible-header">
+                    <a href="#">
+                        ${link.label}
+                    </a>
+                </div>
+                <div class="collapsible-body">
+                    <ul class="collection">
+                        <for|sublink: TLink, index| of=link.links>
+                            <li
+                                key="sublink_sidebar_" + index
+                                class="collection-item"
+                            >
+                                <a href=sublink.path>
+                                    ${sublink.label}
+                                </a>
+                            </li>
+                        </for>
+                    </ul>
+                </div>
+            </li>
+        </if>
+        <else>
+            <li key=link.path + index>
+                <div class="collapsible-header">
+                    <a href=link.path>
+                        ${link.label}
+                    </a>
+                </div>
+            </li>
+        </else>
+    </for>
+</ul>

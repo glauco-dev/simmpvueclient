@@ -1,0 +1,47 @@
+import {CommonPost} from '../config.ts'
+
+export interface Input {
+    data: CommonPost
+    headlight?: boolean | false // posso ligar/desligar para teste
+}
+
+class {
+  onCreate(){
+    console.log(this.input)
+  }
+  insertexcerpt(event){
+    console.log('insertexcerpt', event)
+    // event.target.innerHTML = input.data.excerpt
+  }
+}
+
+style {
+  .card{
+      width: 300px
+  }
+  .card-image img{
+      height: 200px;
+      object-fit: cover;
+      position: relative;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+  }
+}
+
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img src=(input.data.featured.length==0? 'https://picsum.photos/id/237/300/200' : input.data.featured)>
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">${input.data.title}<i class="material-icons right">more_vert</i></span>
+    <p><a href="/p/"+input.data.id>
+          veja mais
+        </a></p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">${input.data.title}<i class="material-icons right">close</i></span>
+    <p><${input.data.excerpt}/></p>
+  </div>
+</div>
+            
+

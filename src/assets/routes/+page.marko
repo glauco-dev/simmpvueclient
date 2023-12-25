@@ -1,0 +1,15 @@
+import { baseApi, api_cats, fixWPDate, parseApiPost } from "../config.ts";
+import {WP_REST_API_Post} from '../types.ts'
+
+
+<await(fetch(`${baseApi}wp-json/wp/v2/posts?_embed&categories=${api_cats.destaques}`))>
+    <@then |response|>
+      <await(response.json())>
+        <@then |posts|>
+            <for|post| of=posts>
+                <card data=parseApiPost(post)/>                
+            </for>
+        </@then>
+      </await>
+    </@then>
+  </await>

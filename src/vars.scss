@@ -1,0 +1,70 @@
+$verde1: #0e6e0f;
+$verde2: #0e720f;
+
+$cs1: #004E64;
+$cs2: #00A5CF;
+$cs3: #25A18E;
+$cs4: #7AE582;
+$cs5: #9FFFCB;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&display=swap');
+
+*{
+    font-family: 'PT Sans', sans-serif;
+        -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+        color-adjust: exact !important;                 /* Firefox 48 – 96 */
+        print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+    
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Open Sans', sans-serif;
+}
+.cursor-pointer{
+    cursor: pointer
+}
+[hidden]{
+    display: none;
+}
+
+.carousel-img{
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .n-modal{
+    box-shadow: none;
+  }
+.p-progress-spinner{
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.hidden{
+    display: none;
+}
+.blurred{
+    filter: blur(2px);
+}
+@media print{
+    nav, footer{
+        display: none;
+    }
+    #carteirinha-impressao{
+        flex-direction: column-reverse;
+        .carteirinha{
+            margin:0;
+        }
+        .atras{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+#app{
+    min-height: 100vh;
+}
+main{
+    padding-bottom: 300px;
+}

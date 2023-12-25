@@ -1,0 +1,11 @@
+<await(fetch('https://random-data-api.com/api/v2/users?size=10'))>
+    <@then |response|>
+      <await(response.json())>
+        <@then |posts|>
+            <context posts=posts>
+                <${input.renderBody}/>
+            </context>
+        </@then>
+      </await>
+    </@then>
+  </await>
